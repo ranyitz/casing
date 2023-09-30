@@ -1,6 +1,6 @@
 # 🔄 Casing
 
-> Scala Library for Naming Convention Transitions (camelCase, PascalCase, snake_case, kebab-case, and more)
+> Scala Library for Naming Convention Transitions (camelCase, PascalCase, snake_case, kebab-case, etc.)
 
 [![Build Status](https://github.com/ranyitz/casing/actions/workflows/ci.yml/badge.svg)](https://github.com/ranyitz/casing/actions/workflows/ci.yml)
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.ranyitz/casing_2.13.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.ranyitz%22%20AND%20a:%22casing_2.13%22)
