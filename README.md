@@ -42,10 +42,10 @@ splits a string into words based on the casing pattern
 > can be used to create any custom naming pattern
 
 ```scala
-Casing.split("fooBarBaz") // List(foo, Bar, Baz)
-Casing.split("foo_bar_baz") // List(foo, bar, baz)
-Casing.split("foo-bar-baz") // List(foo, bar, baz)
-Casing.split("FOO_BAR_BAZ") // List(FOO, BAR, BAZ)
+Casing.split("fooBarBaz") // Seq(foo, Bar, Baz)
+Casing.split("foo_bar_baz") // Seq(foo, bar, baz)
+Casing.split("foo-bar-baz") // Seq(foo, bar, baz)
+Casing.split("FOO_BAR_BAZ") // Seq(FOO, BAR, BAZ)
 ```
 
 ### camelCase
