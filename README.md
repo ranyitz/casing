@@ -3,7 +3,7 @@
 > Scala Library for Naming Convention Transitions (camelCase, PascalCase, snake_case, kebab-case, etc.)
 
 [![Build Status](https://github.com/ranyitz/casing/actions/workflows/ci.yml/badge.svg)](https://github.com/ranyitz/casing/actions/workflows/ci.yml)
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.ranyitz/casing_2.13.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.ranyitz%22%20AND%20a:%22casing_2.13%22)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.ranyitz/casing_2.13.svg?label=Maven%20Central)](https://central.sonatype.com/artifact/io.github.ranyitz/casing_2.13)
 [![Scala Version](https://img.shields.io/badge/scala-2.12%20%7C%202.13%20%7C%203.0-blue.svg)](https://www.scala-lang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
