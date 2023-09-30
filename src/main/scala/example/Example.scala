@@ -1,14 +1,13 @@
-import casing.Casing
+import casing._
 
 object Example extends App {
-  println(Casing.camelCase("foo_bar")) // fooBar
-  println(Casing.pascalCase("foo bar")) // FooBar
-  println(Casing.snakeCase("fooBar")) // foo_bar
-  println(Casing.kebabCase("foo-bar")) // foo-bar
-  println(Casing.constantCase("foo.bar")) // FOO_BAR
+  println(camelCase("foo_bar")) // fooBar
+  println(pascalCase("foo bar")) // FooBar
+  println(snakeCase("fooBar")) // foo_bar
+  println(kebabCase("foo-bar")) // foo-bar
+  println(constantCase("foo.bar")) // FOO_BAR
   println(
-    Casing
-      .split("fooBarBaz")
+    caseSplit("fooBarBaz")
       .map(_.toLowerCase())
       .mkString(".")
   ) // foo.bar.baz
