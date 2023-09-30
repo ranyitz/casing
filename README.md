@@ -24,14 +24,13 @@ libraryDependencies += "io.github.ranyitz" %% "casing" % "0.1.0"
 ```scala
 import casing._
 
-Casing.camelCase("foo_bar") // fooBar
-Casing.pascalCase("foo bar") // FooBar
-Casing.snakeCase("fooBar") // foo_bar
-Casing.kebabCase("foo-bar") // foo-bar
-Casing.constantCase("foo.bar") // FOO_BAR
+camelCase("foo_bar") // fooBar
+pascalCase("foo bar") // FooBar
+snakeCase("fooBar") // foo_bar
+kebabCase("foo-bar") // foo-bar
+constantCase("foo.bar") // FOO_BAR
 
-Casing // foo.bar.baz 
-    .split("fooBarBaz")
+caseSplit("fooBarBaz") // foo.bar.baz 
     .map(_.toLowerCase())
     .mkString(".") 
 ```
@@ -42,56 +41,56 @@ splits a string into words based on the casing pattern
 > can be used to create any custom naming pattern
 
 ```scala
-Casing.split("fooBarBaz") // Seq(foo, Bar, Baz)
-Casing.split("foo_bar_baz") // Seq(foo, bar, baz)
-Casing.split("foo-bar-baz") // Seq(foo, bar, baz)
-Casing.split("FOO_BAR_BAZ") // Seq(FOO, BAR, BAZ)
+caseSplit("fooBarBaz") // Seq(foo, Bar, Baz)
+caseSplit("foo_bar_baz") // Seq(foo, bar, baz)
+caseSplit("foo-bar-baz") // Seq(foo, bar, baz)
+caseSplit("FOO_BAR_BAZ") // List(FOO, BAR, BAZ)
 ```
 
 ### camelCase
 converts a string to [camelCase](https://en.wikipedia.org/wiki/Camel_case)
 
 ```scala
-Casing.camelCase("foo_bar") // fooBar
+camelCase("foo_bar") // fooBar
 ```
 
 ### pascalCase
 converts a string to [PascalCase](https://en.wikipedia.org/wiki/Camel_case)
 
 ```scala
-Casing.pascalCase("foo_bar") // FooBar
+pascalCase("foo_bar") // FooBar
 ```
 
 ### snakeCase
 converts a string to [snake_case](https://en.wikipedia.org/wiki/Snake_case)
 
 ```scala
-Casing.snakeCase("fooBar") // foo_bar
+snakeCase("fooBar") // foo_bar
 ```
 
 ### kebabCase
 converts a string to [kebab-case](https://en.wikipedia.org/wiki/Letter_case#Special_case_styles)
 
 ```scala
-Casing.kebabCase("fooBar") // foo-bar
+kebabCase("fooBar") // foo-bar
 ```
 
 ### constantCase
 converts a string to CONSTANT_CASE or [SCREAMING_SNAKE_CASE](https://en.wikipedia.org/wiki/Snake_case)
 
 ```scala
-Casing.constantCase("fooBar") // FOO_BAR
+constantCase("fooBar") // FOO_BAR
 ```
 
 ### Validation Functions
 validates a string against a specific naming convention
 
 ```scala
-Casing.isCamelCase("fooBar") // true
-Casing.isPascalCase("FooBar") // true
-Casing.isSnakeCase("foo_bar") // true
-Casing.isKebabCase("foo-bar") // true
-Casing.isConstantCase("FOO_BAR") // true
+isCamelCase("fooBar") // true
+isPascalCase("FooBar") // true
+isSnakeCase("foo_bar") // true
+isKebabCase("foo-bar") // true
+isConstantCase("FOO_BAR") // true
 ```
 
 ### Inspiration

@@ -4,110 +4,110 @@ import casing._
 
 object CasingTest extends SimpleTestSuite {
   test("split") {
-    expect(Casing.split("fooBar"), Seq("foo", "Bar"))
-    expect(Casing.split("FooBar"), Seq("Foo", "Bar"))
-    expect(Casing.split("FOOBar"), Seq("FOO", "Bar"))
-    expect(Casing.split("foo_bar"), Seq("foo", "bar"))
-    expect(Casing.split("foo-bar"), Seq("foo", "bar"))
-    expect(Casing.split("foo.bar"), Seq("foo", "bar"))
-    expect(Casing.split("Foo Bar"), Seq("Foo", "Bar"))
-    expect(Casing.split("foo bar"), Seq("foo", "bar"))
-    expect(Casing.split("FOO_BAR"), Seq("FOO", "BAR"))
-    expect(Casing.split("foo/bar"), Seq("foo", "bar"))
-    expect(Casing.split(" foo bar "), Seq("foo", "bar"))
-    expect(Casing.split("_foo-Bar.Baz_Qux "), Seq("foo", "Bar", "Baz", "Qux"))
+    expect(caseSplit("fooBar"), Seq("foo", "Bar"))
+    expect(caseSplit("FooBar"), Seq("Foo", "Bar"))
+    expect(caseSplit("FOOBar"), Seq("FOO", "Bar"))
+    expect(caseSplit("foo_bar"), Seq("foo", "bar"))
+    expect(caseSplit("foo-bar"), Seq("foo", "bar"))
+    expect(caseSplit("foo.bar"), Seq("foo", "bar"))
+    expect(caseSplit("Foo Bar"), Seq("Foo", "Bar"))
+    expect(caseSplit("foo bar"), Seq("foo", "bar"))
+    expect(caseSplit("FOO_BAR"), Seq("FOO", "BAR"))
+    expect(caseSplit("foo/bar"), Seq("foo", "bar"))
+    expect(caseSplit(" foo bar "), Seq("foo", "bar"))
+    expect(caseSplit("_foo-Bar.Baz_Qux "), Seq("foo", "Bar", "Baz", "Qux"))
   }
 
   test("split with numbers=false") {
-    expect(Casing.split("fooBar123", SplitOptions(numbers = false)), Seq("foo", "Bar123"))
-    expect(Casing.split("123foo bar", SplitOptions(numbers = false)), Seq("123foo", "bar"))
-    expect(Casing.split("123.foo.bar", SplitOptions(numbers = false)), Seq("123", "foo", "bar"))
+    expect(caseSplit("fooBar123", SplitOptions(numbers = false)), Seq("foo", "Bar123"))
+    expect(caseSplit("123foo bar", SplitOptions(numbers = false)), Seq("123foo", "bar"))
+    expect(caseSplit("123.foo.bar", SplitOptions(numbers = false)), Seq("123", "foo", "bar"))
     expect(
-      Casing.split("Scala2.13.11", SplitOptions(numbers = false)),
+      caseSplit("Scala2.13.11", SplitOptions(numbers = false)),
       Seq("Scala2", "13", "11")
     )
-    expect(Casing.split("1V", SplitOptions(numbers = false)), Seq("1V"))
+    expect(caseSplit("1V", SplitOptions(numbers = false)), Seq("1V"))
   }
 
   test("split with numbers=true (default)") {
-    expect(Casing.split("fooBar123"), Seq("foo", "Bar", "123"))
-    expect(Casing.split("123foo bar"), Seq("123", "foo", "bar"))
+    expect(caseSplit("fooBar123"), Seq("foo", "Bar", "123"))
+    expect(caseSplit("123foo bar"), Seq("123", "foo", "bar"))
     expect(
-      Casing.split("Scala2.13.11"),
+      caseSplit("Scala2.13.11"),
       Seq("Scala", "2", "13", "11")
     )
-    expect(Casing.split("1V"), Seq("1", "V"))
+    expect(caseSplit("1V"), Seq("1", "V"))
   }
 
   test("camelCase") {
-    assertEquals(Casing.camelCase("foo bar"), "fooBar")
-    assertEquals(Casing.camelCase("FOO BAR"), "fooBar")
-    assertEquals(Casing.camelCase("foo bar 123"), "fooBar123")
+    assertEquals(camelCase("foo bar"), "fooBar")
+    assertEquals(camelCase("FOO BAR"), "fooBar")
+    assertEquals(camelCase("foo bar 123"), "fooBar123")
   }
 
   test("isCamelCase") {
-    assert(Casing.isCamelCase("fooBar"))
-    assert(Casing.isCamelCase("FooBar") == false)
-    assert(Casing.isCamelCase("foo_bar") == false)
+    assert(isCamelCase("fooBar"))
+    assert(isCamelCase("FooBar") == false)
+    assert(isCamelCase("foo_bar") == false)
   }
 
   test("PascalCase") {
-    assertEquals(Casing.pascalCase("foo bar"), "FooBar")
-    assertEquals(Casing.pascalCase("FOO BAR"), "FooBar")
+    assertEquals(pascalCase("foo bar"), "FooBar")
+    assertEquals(pascalCase("FOO BAR"), "FooBar")
   }
 
   test("isPascalCase") {
-    assert(Casing.isPascalCase("FooBar"))
-    assert(Casing.isPascalCase("fooBar") == false)
-    assert(Casing.isPascalCase("foo_bar") == false)
+    assert(isPascalCase("FooBar"))
+    assert(isPascalCase("fooBar") == false)
+    assert(isPascalCase("foo_bar") == false)
   }
 
   test("snake_case") {
-    assertEquals(Casing.snakeCase("foo bar"), "foo_bar")
-    assertEquals(Casing.snakeCase("FooBar"), "foo_bar")
-    assertEquals(Casing.snakeCase("FooBar123"), "foo_bar_123")
+    assertEquals(snakeCase("foo bar"), "foo_bar")
+    assertEquals(snakeCase("FooBar"), "foo_bar")
+    assertEquals(snakeCase("FooBar123"), "foo_bar_123")
     assertEquals(
-      Casing.snakeCase("FooBar123", options = SplitOptions(numbers = false)),
+      snakeCase("FooBar123", options = SplitOptions(numbers = false)),
       "foo_bar123"
     )
   }
 
   test("isSnakeCase") {
-    assert(Casing.isSnakeCase("foo_bar"))
-    assert(Casing.isSnakeCase("fooBar") == false)
-    assert(Casing.isSnakeCase("FOO_BAR") == false)
+    assert(isSnakeCase("foo_bar"))
+    assert(isSnakeCase("fooBar") == false)
+    assert(isSnakeCase("FOO_BAR") == false)
   }
 
   test("CONSTANT_CASE") {
-    assertEquals(Casing.constantCase("foo bar"), "FOO_BAR")
-    assertEquals(Casing.constantCase("FooBar"), "FOO_BAR")
-    assertEquals(Casing.constantCase("FooBar123"), "FOO_BAR_123")
+    assertEquals(constantCase("foo bar"), "FOO_BAR")
+    assertEquals(constantCase("FooBar"), "FOO_BAR")
+    assertEquals(constantCase("FooBar123"), "FOO_BAR_123")
     assertEquals(
-      Casing.constantCase("FooBar123", options = SplitOptions(numbers = false)),
+      constantCase("FooBar123", options = SplitOptions(numbers = false)),
       "FOO_BAR123"
     )
   }
 
   test("isConstantCase") {
-    assert(Casing.isConstantCase("FOO_BAR"))
-    assert(Casing.isConstantCase("fooBar") == false)
-    assert(Casing.isConstantCase("foo_bar") == false)
+    assert(isConstantCase("FOO_BAR"))
+    assert(isConstantCase("fooBar") == false)
+    assert(isConstantCase("foo_bar") == false)
   }
 
   test("kebab-case") {
-    assertEquals(Casing.kebabCase("foo bar"), "foo-bar")
-    assertEquals(Casing.kebabCase("FooBar"), "foo-bar")
-    assertEquals(Casing.kebabCase("FooBar123"), "foo-bar-123")
+    assertEquals(kebabCase("foo bar"), "foo-bar")
+    assertEquals(kebabCase("FooBar"), "foo-bar")
+    assertEquals(kebabCase("FooBar123"), "foo-bar-123")
     assertEquals(
-      Casing.kebabCase("FooBar123", options = SplitOptions(numbers = false)),
+      kebabCase("FooBar123", options = SplitOptions(numbers = false)),
       "foo-bar123"
     )
   }
 
   test("isKebabCase") {
-    assert(Casing.isKebabCase("foo-bar"))
-    assert(Casing.isKebabCase("FOO-BAR") == false)
-    assert(Casing.isKebabCase("FOO_BAR") == false)
-    assert(Casing.isKebabCase("fooBar") == false)
+    assert(isKebabCase("foo-bar"))
+    assert(isKebabCase("FOO-BAR") == false)
+    assert(isKebabCase("FOO_BAR") == false)
+    assert(isKebabCase("fooBar") == false)
   }
 }
