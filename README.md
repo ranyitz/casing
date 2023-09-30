@@ -16,7 +16,7 @@
 To include Casing in your Scala project, add the following dependency:
 
 ```scala
-libraryDependencies += "io.github.ranyitz" %% "casing" % "0.1.0"
+libraryDependencies += "io.github.ranyitz" %% "casing" % "0.2.0"
 ```
 
 ## Usage
