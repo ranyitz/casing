@@ -1,4 +1,4 @@
-package casing.test
+package casing
 
 import minitest.api._
 

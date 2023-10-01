@@ -1,6 +1,7 @@
+package casing
+
 import minitest._
-import casing.test.TestUtils.expect
-import casing._
+import casing.TestUtils.expect
 
 object CasingTest extends SimpleTestSuite {
   test("split") {
@@ -47,8 +48,8 @@ object CasingTest extends SimpleTestSuite {
 
   test("isCamelCase") {
     assert(isCamelCase("fooBar"))
-    assert(isCamelCase("FooBar") == false)
-    assert(isCamelCase("foo_bar") == false)
+    assert(!isCamelCase("FooBar"))
+    assert(!isCamelCase("foo_bar"))
   }
 
   test("PascalCase") {
@@ -58,8 +59,8 @@ object CasingTest extends SimpleTestSuite {
 
   test("isPascalCase") {
     assert(isPascalCase("FooBar"))
-    assert(isPascalCase("fooBar") == false)
-    assert(isPascalCase("foo_bar") == false)
+    assert(!isPascalCase("fooBar"))
+    assert(!isPascalCase("foo_bar"))
   }
 
   test("snake_case") {
@@ -74,8 +75,8 @@ object CasingTest extends SimpleTestSuite {
 
   test("isSnakeCase") {
     assert(isSnakeCase("foo_bar"))
-    assert(isSnakeCase("fooBar") == false)
-    assert(isSnakeCase("FOO_BAR") == false)
+    assert(!isSnakeCase("fooBar"))
+    assert(!isSnakeCase("FOO_BAR"))
   }
 
   test("CONSTANT_CASE") {
@@ -90,8 +91,8 @@ object CasingTest extends SimpleTestSuite {
 
   test("isConstantCase") {
     assert(isConstantCase("FOO_BAR"))
-    assert(isConstantCase("fooBar") == false)
-    assert(isConstantCase("foo_bar") == false)
+    assert(!isConstantCase("fooBar"))
+    assert(!isConstantCase("foo_bar"))
   }
 
   test("kebab-case") {
@@ -106,8 +107,8 @@ object CasingTest extends SimpleTestSuite {
 
   test("isKebabCase") {
     assert(isKebabCase("foo-bar"))
-    assert(isKebabCase("FOO-BAR") == false)
-    assert(isKebabCase("FOO_BAR") == false)
-    assert(isKebabCase("fooBar") == false)
+    assert(!isKebabCase("FOO-BAR"))
+    assert(!isKebabCase("FOO_BAR"))
+    assert(!isKebabCase("fooBar"))
   }
 }

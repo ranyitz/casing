@@ -1,6 +1,6 @@
 import casing._
 
-object Example extends App {
+private object Example extends App {
   println(camelCase("foo_bar")) // fooBar
   println(pascalCase("foo bar")) // FooBar
   println(snakeCase("fooBar")) // foo_bar

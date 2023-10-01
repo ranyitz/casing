@@ -2,24 +2,24 @@ package casing
 
 import scala.util.matching.Regex
 
-protected class Casing {
+class Casing {
   // finds a lower char followed by an upper char and returns them as capture groups
   // e.g. fooBar -> foo, Bar
-  private val LOWER_UPPER_REGEX: Regex = "([\\p{Ll}])(\\p{Lu})".r
+  private val LOWER_UPPER_REGEX: Regex = "(\\p{Ll})(\\p{Lu})".r
   // finds an upper char followed by and upper and lower char and return them as capture groups
   // e.g. FOOBar -> FOO, Bar
-  private val UPPER_UPPER_LOWER_REGEX: Regex = "(\\p{Lu})([\\p{Lu}][\\p{Ll}])".r
+  private val UPPER_UPPER_LOWER_REGEX: Regex = "(\\p{Lu})(\\p{Lu}\\p{Ll})".r
   // finds a number followed by a letter and returns them as capture groups
   private val NUMBER_LETTER_REGEX: Regex = "(\\d)(\\p{L})".r
   // finds a letter followed by a number and returns them as capture groups
   private val LETTER_NUMBER_REGEX: Regex = "(\\p{L})(\\d)".r
   // finds all non-alphanumeric characters (including non-ASCII)
   private val NON_ALPHANUMERIC_REGEXP: Regex = "[^\\p{L}\\d]+".r
-  // use a null character as a delimeter
-  private val DELIMETER = "\u0000"
+  // use a null character as a delimiter
+  private val DELIMITER = "\u0000"
   // a regex replacement value that will be used to replace the matched value with
-  // the first capture group followed by a delimeter and the second capture group
-  private val REPLACEMENT_SEPARATOR: String = s"$$1$DELIMETER$$2"
+  // the first capture group followed by a delimiter and the second capture group
+  private val REPLACEMENT_SEPARATOR: String = s"$$1$DELIMITER$$2"
 
   def caseSplit(input: String, options: SplitOptions = SplitOptions()): Seq[String] = {
     var result = input
@@ -32,9 +32,9 @@ protected class Casing {
         .replaceAll(LETTER_NUMBER_REGEX.pattern.pattern(), REPLACEMENT_SEPARATOR)
     }
 
-    result = result.replaceAll(NON_ALPHANUMERIC_REGEXP.pattern.pattern(), DELIMETER)
+    result = result.replaceAll(NON_ALPHANUMERIC_REGEXP.pattern.pattern(), DELIMITER)
 
-    result.split(DELIMETER).filter(_.nonEmpty)
+    result.split(DELIMITER).filter(_.nonEmpty)
   }
 
   // foo bar -> fooBar
